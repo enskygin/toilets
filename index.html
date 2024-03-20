@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Site Suitability Analysis for Public Toilet Instillations in Chicago, IL
+            </h1>
+            <h2>March 2024 – Katherine Ginensky</h2>
+        <svg id="top-bar" width="100%" height="50">
+            
+        </svg>
+
+        <section class="about" id="about">
+            <div class="about-content">
+                <p class="section-title">
+                    Introduction
+                </p>
+                <img src="toilet.png">
+                <p><br>
+                    The study area is Chicago, Illinois. This area was chosen because of recent developments in policy for providing public toilets. The city of Chicago has signed a contract with JCDecaux, who already furnishes the city’s sheltered bus stations, to purchase four self-cleaning public toilets. Currently in pilot phase, there will be four new self-cleaning toilets installed in two central wards. JCDecaux, based in France, has installed 2,500 public, self-cleaning toilets in cities around the world. Paris leads with approximately 400 public toilets throughout the city. With a population of 2.16 million, Paris is comparable to Chicago’s 2.7 million people. To match the density of toilets per capita, Chicago would need to install almost 500 toilets, while to match the proportion of toilets to urban area, Chicago would need to install 2,350 toilets. 
+                    Chicago currently has around 500 public restrooms between civic centers, field houses, and public buildings. However, these have limited hours, closing in the evening, and are only open seasonally, never in the winter. These bathrooms often are dirty, hard to find, and unknown to the public or tourists. Additionally, even though private businesses are required to provide a restroom, many do not feel comfortable using these spaces or are denied from use regardless of regulation. Many transit workers, like bus operators, note that it is extremely difficult to find a restroom on their route and must hold up the line on occasion in search of public toilets. Many agree that additional, 24 hour, self cleaning, free, public toilets would be a value asset to the city. So that just leaves the questions of where?
+                </p>
+                
+
+                <p class="section-title">
+                    Data Collection
+                </p>
+                <p><br>
+                    The data for this project was sourced from the Chicago Data Portal as shapefiles and CSVs. The citations data was filtered for public urinations and converted to a raster file with resolution of 10 acres using a kernel density transformation. This heat map was used as a proxy for need of restrooms or inadequate access to public restrooms. The parks are a common recreation area and often a location where one may spend a considerable amount of time. A ¼ mile buffer was created, which is approximately a five-minute walk for the average adult. This was chosen as a reasonable amount of time one may be willing to walk to reach a restroom. CTA train stations were chosen as the next input. Bus and train operators have access to train stations and many people travel through train stations during a regular commute. Because train stations are more regularly visited and incorporated into the average Chicagoan’s day, a 5 minute and a 10 minute (¼ and ½ mile) were created. 
+                </p>
+                <p><br>
+                    The model chosen was ordinal combination. Every layer was given a value of 1, where the parks and park buffers were separate layers and the train stations, 5 minute buffer, and 10 minute buffer were separate layers. This meant that, for example, at a train station, the suitability score would be 3, because the addition of the train station, 5 minute buffer, and 10 minute buffer. All layers were converted to raster at a resolution of 10 acres to match the Citation Heat map.
+                </p>
+
+                <embed src="Parks.pdf" type="application/pdf" width="100%" height="850px">
+                    <p><br>
+                        Map 1 – Showing the locations of park district space in Chicago. A quarter of a mile buffer was drawn to estimate a 5 minute walk for an average adult to park space.
+                    </p>
+                    <embed src="Trains.pdf" type="application/pdf" width="100%" height="850px">
+                        <p><br>
+                            Map 2 – CTA train stations are shown in blue with a 14 ft. buffer to represent average width of a major street intersection. A darker purple radius of a quarter of a mile represents a 5 minute walk for the average adult, and the lighter purple rings represent a 10 minute walk for an average adult. 
+                        </p>
+                        <embed src="Need_Heatmap.pdf" type="application/pdf" width="100%" height="850px">
+                            <p><br>
+                                Map 3 – Created from point data of citations for public urination in Chicago between 2015 and 2020, a kernel density map was created as proxy for demonstrated need of public restrooms. Areas with the most citations are considered the most in need. 
+                            </p>
+                            <embed src="Combined Raster_2.pdf" type="application/pdf" width="100%" height="850px">
+                                <p><br>
+                                    Map 4 – The site suitability map shows a summation of scores for each of the variables, proximity to park space, CTA Train stations, and locations of public urination citations. Areas highlighted in yellow would be most suitable for additional public toilets, while darker areas have not demonstrated much need and may not be most useful. 
+                                </p>
+
+                                <p><br>
+                                    The final suitability map indicates that there are many areas of the city that would benefit from additional, free public toilets. The hot spots indicated are in the Loop, the downtown business district, as well as along major train lines, like on the South Side where the CTA Line runs, directly West of Downtown, along the lakefront on the North Side, and along the diagonal CTA train route on the North West side, where there are many bars and restaurants. This map shows more areas than I would have expected, based on the location of parks and train stations, but by incorporating the citation information, more areas of the city were found to be suitable. 
+
+	To improve this suitability study, data of bars and existing bathrooms (although less useful) could be incorporated. To improve my model, I would take the goal number of bathrooms, between 500 and 2,350 and try to map where exactly those could be placed. Additionally, limiting potential suitable space to streets and public areas would help further narrow down the exact locations of potential toilets. 
+</p>
+                </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
